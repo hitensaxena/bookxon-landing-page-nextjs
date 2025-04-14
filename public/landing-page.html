@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crow Business - Transform Your Service Business (Flat Edges)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* --- BookXon Color Palette & Gradient Theme --- */
+    :root {
+      /* BookXon Palette */
+      --bx-primary: #006e5e;          /* Primary Green */
+      --bx-primary-hover: #005a4d;  /* Darker Primary Green */
+      --bx-secondary: #f0fdfa;        /* Very Light Green/Cyan Tint */
+      --bx-secondary-hover: #ccfbf1;  /* Slightly darker tint */
+      --bx-accent: #0be6c5;          /* Bright Cyan/Green Tint */
+      --bx-accent-hover: #0aa38f;     /* Slightly darker accent */
+      --bx-dark: #001f1a;            /* Dark Green/Teal */
+      --bx-on-primary: #ffffff;       /* Text on Primary */
+
+      /* Gradient Definition */
+      --gradient-start: var(--bx-primary);
+      --gradient-end: var(--bx-accent);
+      --gradient-hover-start: var(--bx-primary-hover);
+      --gradient-hover-end: var(--bx-accent-hover);
+
+      /* Standard Text & Backgrounds */
+      --text-primary: #1f2937;       /* Gray-800 */
+      --text-secondary: #4b5563;   /* Gray-600 */
+      --text-light: #f9fafb;        /* Gray-50 */
+      --border-color: #e5e7eb;       /* Gray-200 */
+      --bg-light: var(--bx-secondary); /* Use BookXon secondary for light bg */
+      --bg-white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-white);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* --- Headings --- */
+    h1, h2, h3 {
+      font-weight: 700; /* Bold */
+      color: var(--text-primary);
+    }
+    h4, h5, h6 {
+      font-weight: 600; /* Semibold */
+      color: var(--text-primary);
+    }
+
+    /* --- Professional Button Styles --- */
+    .pro-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.75rem; /* py-3 px-7 */
+      border-radius: 0.5rem; /* rounded-lg */
+      font-weight: 600; /* Semibold */
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid transparent;
+      /* Removed default button shadow */
+      /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05); */
+      white-space: nowrap; /* Prevent wrapping */
+    }
+    .pro-button:hover {
+      transform: translateY(-2px);
+      /* You might want to adjust hover shadow too if needed */
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    }
+    .pro-button:focus {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+      box-shadow: 0 0 0 3px rgba(11, 230, 197, 0.4); /* Focus ring using accent color */
+    }
+
+    /* Primary Button (Gradient) */
+    .pro-button-primary {
+      background-image: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+      color: var(--bx-on-primary);
+      border: none;
+    }
+    .pro-button-primary:hover {
+      background-image: linear-gradient(to right, var(--gradient-hover-start), var(--gradient-hover-end));
+    }
+
+    /* Secondary Button (Outline) */
+    .pro-button-secondary {
+      background-color: var(--bg-white);
+      color: var(--gradient-start);
+      border: 1px solid var(--gradient-start);
+    }
+    .pro-button-secondary:hover {
+      background-color: var(--bx-secondary-hover);
+      border-color: var(--gradient-hover-start);
+      color: var(--gradient-hover-start);
+    }
+
+    /* --- Gradient Text Utility --- */
+    .text-gradient {
+      background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+
+    /* --- Icon Styling (for Feature Icons) --- */
+    .icon-feature {
+      width: 2.5rem; /* Increased size slightly */
+      height: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--gradient-start); /* Use solid color for better visibility */
+    }
+
+    /* --- Sticky Header --- */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: rgba(255, 255, 255, 0.85); /* Slightly less transparent */
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); /* Safari support */
+      border-bottom: 1px solid var(--border-color);
+      transition: box-shadow 0.2s ease;
+    }
+    /* Add shadow on scroll */
+    body.scrolled .sticky-header {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+
+    /* --- Responsive Image Styling --- */
+    /* img.feature-image rule removed */
+
+    /* --- FAQ Accordion Styling --- */
+    .faq-item details > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 1.5rem 0.5rem; /* Increased padding */
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.2s ease;
+    }
+    .faq-item details > summary:hover {
+      background-color: var(--bx-secondary); /* Subtle hover */
+    }
+    .faq-item details > summary::-webkit-details-marker { display: none; }
+    .faq-item details > summary .faq-icon {
+      transition: transform 0.3s ease-in-out;
+      color: var(--gradient-start);
+      font-weight: bold;
+      font-size: 1.3em; /* Slightly larger icon */
+      line-height: 1;
+    }
+    .faq-item details[open] > summary .faq-icon { transform: rotate(45deg); }
+    .faq-item details > div {
+      padding: 0.5rem 0.5rem 1.5rem 1rem; /* Adjusted padding */
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      border-left: 2px solid var(--gradient-start); /* Add left border when open */
+      margin-left: 0.5rem; /* Align with summary padding */
+    }
+    .faq-item { border-bottom: 1px solid var(--border-color); }
+    .faq-item:last-child { border-bottom: none; }
+
+    /* --- Scroll Animation --- */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px); /* Slightly more pronounced */
+      transition: opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Diagonal Section Dividers (COMMENTED OUT) --- */
+    /* ... */
+
+    /* Specific background colors for sections */
+    #features { background-color: var(--bg-light); }
+    #how-it-works { background-color: var(--bg-light); }
+    #feature-payment-detail { background-color: var(--bg-white); } /* Kept white */
+    #pricing { background-color: var(--bg-light); }
+
+    /* --- Testimonial Carousel --- */
+    .testimonial-carousel .flex {
+      /* transition: transform 0.5s ease-in-out; */
+    }
+
+    /* --- How It Works Toggle --- */
+    #how-it-works-toggle button span:last-child {
+      transition: opacity 0.3s ease; /* Smooth transition for the background span */
+    }
+
+    /* --- Footer Styling --- */
+    footer#support {
+      background-color: var(--bg-white);
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-color);
+    }
+    footer#support h5 {
+      color: var(--text-primary);
+    }
+    footer#support a:not(.text-gradient) {
+      color: var(--text-secondary);
+    }
+    footer#support a:not(.text-gradient):hover {
+      color: var(--gradient-start);
+      text-decoration: underline;
+    }
+    footer#support .social-links a svg {
+      color: var(--text-secondary);
+    }
+    footer#support .social-links a:hover svg {
+      color: var(--gradient-start);
+    }
+    footer#support .copyright {
+      border-top-color: var(--border-color);
+      color: var(--text-secondary);
+    }
+
+
+    /* --- Placeholder Fallback --- */
+    img[onerror] {
+      /* Optional: style broken images */
+    }
+
+    /* Remove shadow from specific images */
+    img.no-shadow {
+        box-shadow: none !important;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <header id="main-header" class="sticky-header py-4 px-6 md:px-10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#hero" class="text-3xl font-extrabold text-gradient">Crow</a>
+
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#about" class="text-sm font-medium text-gray-700 hover:text-[var(--gradient-start)] transition duration-200">About</a>
+        <a href="#features" class="text-sm font-medium text-gray-700 hover:text-[var(--gradient-start)] transition duration-200">Features</a>
+        <a href="#pricing" class="text-sm font-medium text-gray-700 hover:text-[var(--gradient-start)] transition duration-200">Pricing</a>
+        <a href="#testimonials" class="text-sm font-medium text-gray-700 hover:text-[var(--gradient-start)] transition duration-200">Reviews</a>
+        <a href="#faq" class="text-sm font-medium text-gray-700 hover:text-[var(--gradient-start)] transition duration-200">FAQ</a>
+      </nav>
+
+      <div class="flex items-center space-x-4">
+        <a href="#download-app" class="pro-button pro-button-primary text-sm hidden sm:inline-flex">Download Now</a>
+        <button id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-gray-600 hover:text-[var(--gradient-start)] p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--gradient-start)]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <span class="sr-only">Open menu</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 bg-white shadow-lg py-4 px-6 border-t border-[var(--border-color)]">
+      <nav class="flex flex-col space-y-3">
+        <a href="#about" class="mobile-nav-link block text-base font-medium text-gray-700 hover:text-[var(--gradient-start)] py-2">About</a>
+        <a href="#features" class="mobile-nav-link block text-base font-medium text-gray-700 hover:text-[var(--gradient-start)] py-2">Features</a>
+        <a href="#pricing" class="mobile-nav-link block text-base font-medium text-gray-700 hover:text-[var(--gradient-start)] py-2">Pricing</a>
+        <a href="#testimonials" class="mobile-nav-link block text-base font-medium text-gray-700 hover:text-[var(--gradient-start)] py-2">Reviews</a>
+        <a href="#faq" class="mobile-nav-link block text-base font-medium text-gray-700 hover:text-[var(--gradient-start)] py-2">FAQ</a>
+        <a href="#download-app" class="mobile-nav-link block w-full mt-4 pro-button pro-button-primary text-sm">Download Now</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="pt-24 pb-20 md:pt-32 md:pb-28 px-6 lg:px-8 relative overflow-hidden bg-white">
+      <div class="absolute top-0 left-0 -translate-x-1/3 -translate-y-1/3 opacity-10 pointer-events-none" style="z-index: 0;">
+        <svg width="600" height="600" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="100" fill="url(#grad1_hero)"/>
+          <defs><radialGradient id="grad1_hero" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 100) rotate(90) scale(100)"><stop stop-color="var(--gradient-end)"/><stop offset="1" stop-color="var(--gradient-start)" stop-opacity="0"/></radialGradient></defs>
+        </svg>
+      </div>
+      <div class="absolute bottom-0 right-0 translate-x-1/4 translate-y-1/4 opacity-10 pointer-events-none" style="z-index: 0;">
+        <svg width="500" height="500" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="100" fill="url(#grad2_hero)"/>
+          <defs><radialGradient id="grad2_hero" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 100) rotate(90) scale(100)"><stop stop-color="var(--gradient-start)"/><stop offset="1" stop-color="var(--gradient-end)" stop-opacity="0"/></radialGradient></defs>
+        </svg>
+      </div>
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
+        <div class="reveal-on-scroll text-center md:text-left">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+            Stop Chasing Paperwork. <br/> <span class="text-gradient">Start Growing Your Passion.</span>
+          </h1>
+          <p class="text-lg md:text-xl text-[var(--text-secondary)] mb-10 max-w-lg mx-auto md:mx-0">
+            Crow streamlines your bookings, payments, and client management, freeing you up to do what you do best. Perfect for ambitious stylists, therapists, cleaners, and service pros.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a href="#download-app" class="pro-button pro-button-primary text-lg px-8 py-3">Download Now</a>
+            <a href="#features" class="pro-button pro-button-secondary">Explore Features</a>
+          </div>
+          <p class="text-sm text-gray-500 mt-6">Join thousands already saving hours every week.</p>
+        </div>
+        <div class="reveal-on-scroll" style="transition-delay: 0.15s;">
+          <div class="relative max-w-md mx-auto">
+            <div class="absolute -inset-4 bg-gradient-to-br from-[var(--gradient-start)] to-[var(--gradient-end)] opacity-10 rounded-full blur-2xl pointer-events-none"></div>
+            <img
+              src="https://i.ibb.co/RTpwKGG8/hero_shot.png"
+              alt="Crow app interface showing expense management on iPhone"
+              class="w-full h-auto mx-auto transform transition duration-500 hover:scale-105 relative z-10 no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/500x600/e2e8f0/94a3b8?text=App+Screenshot';"
+              loading="eager"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="trusted-by" class="py-16 px-6 lg:px-8 bg-gradient-to-b from-white to-[var(--bg-light)]">
+      <div class="max-w-6xl mx-auto text-center reveal-on-scroll">
+        <p class="text-base font-semibold text-gray-500 uppercase tracking-wider mb-10">Powering Growth for Professionals Nationwide</p>
+        <div class="flex flex-wrap justify-center items-center gap-x-12 sm:gap-x-16 md:gap-x-20 gap-y-8">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Client Logo 1" class="h-8 sm:h-9 grayscale hover:grayscale-0 transition duration-300 opacity-60 hover:opacity-100 no-shadow" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/100x40/e2e8f0/94a3b8?text=Logo+1';">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Client Logo 2" class="h-8 sm:h-9 grayscale hover:grayscale-0 transition duration-300 opacity-60 hover:opacity-100 no-shadow" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/100x40/e2e8f0/94a3b8?text=Logo+2';">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Client Logo 3" class="h-8 sm:h-9 grayscale hover:grayscale-0 transition duration-300 opacity-60 hover:opacity-100 no-shadow" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/100x40/e2e8f0/94a3b8?text=Logo+3';">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Client Logo 4" class="h-8 sm:h-9 grayscale hover:grayscale-0 transition duration-300 opacity-60 hover:opacity-100 no-shadow" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/100x40/e2e8f0/94a3b8?text=Logo+4';">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="Client Logo 5" class="h-8 sm:h-9 grayscale hover:grayscale-0 transition duration-300 opacity-60 hover:opacity-100 no-shadow" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/100x40/e2e8f0/94a3b8?text=Logo+5';">
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-on-scroll">
+          <span class="inline-block bg-[var(--bx-secondary-hover)] text-[var(--gradient-start)] text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">About Us</span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">Empowering Service Professionals Since 2023</h2>
+          <p class="text-lg text-[var(--text-secondary)] mb-6">
+            At Crow, we're dedicated to revolutionizing how service professionals manage their businesses. Our platform combines cutting-edge technology with user-friendly design to create the most efficient business management solution available.
+          </p>
+          <p class="text-lg text-[var(--text-secondary)] mb-8">
+            Founded by a team of industry experts and innovative developers, we understand the unique challenges service professionals face. Our mission is to eliminate administrative burdens, allowing you to focus on what truly matters - delivering exceptional service to your clients.
+          </p>
+          <div class="grid grid-cols-2 gap-6 mt-10">
+            <div class="text-center p-6 bg-[var(--bg-light)] rounded-xl border border-gray-200">
+              <p class="text-4xl font-bold text-gradient mb-2">10K+</p>
+              <p class="text-sm text-[var(--text-secondary)] font-medium">Active Users</p>
+            </div>
+            <div class="text-center p-6 bg-[var(--bg-light)] rounded-xl border border-gray-200">
+              <p class="text-4xl font-bold text-gradient mb-2">98%</p>
+              <p class="text-sm text-[var(--text-secondary)] font-medium">Client Satisfaction</p>
+            </div>
+          </div>
+        </div>
+        <img
+          src="https://i.ibb.co/5hhJBbm4/Chat-GPT-Image-Apr-13-2025-at-10-49-55-AM.png"
+          alt="Diverse team collaborating on the Crow project"
+          class="mx-auto reveal-on-scroll no-shadow object-cover w-full h-auto max-h-[480px]" style="transition-delay: 0.15s;"
+          onerror="this.onerror=null; this.src='https://placehold.co/600x450/e2e8f0/94a3b8?text=About+Us+Image';"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <section id="features" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-[var(--bg-light)]">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-5">Your Business <span class="text-gradient">Supercharged</span></h2>
+          <p class="text-lg text-[var(--text-secondary)]">
+            Crow packs powerful features into a simple, intuitive interface designed to save you time and boost your revenue.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <div class="p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 reveal-on-scroll">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/calendar-check-2.svg" alt="" class="icon-feature no-shadow"/>
+            <h3 class="text-xl font-semibold mb-3">Effortless 24/7 Booking</h3>
+            <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Clients book themselves anytime, anywhere. Syncs instantly with your calendar. Say goodbye to phone tag!</p>
+          </div>
+          <div class="p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 reveal-on-scroll" style="transition-delay: 0.1s;">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/smartphone-charging.svg" alt="" class="icon-feature no-shadow"/>
+            <h3 class="text-xl font-semibold mb-3">Seamless Payments</h3>
+            <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Accept online payments, take deposits, manage payouts. Secure, fast, and integrated directly.</p>
+          </div>
+          <div class="p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 reveal-on-scroll" style="transition-delay: 0.2s;">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/shield-check.svg" alt="" class="icon-feature no-shadow"/> <h3 class="text-xl font-semibold mb-3">No-Show Guard</h3>
+            <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Protect your income. Enforce cancellation policies automatically with deposits or stored cards.</p>
+          </div>
+          <div class="p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 reveal-on-scroll" style="transition-delay: 0.05s;"> <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/users.svg" alt="" class="icon-feature no-shadow"/> <h3 class="text-xl font-semibold mb-3">Smart Client Hub</h3>
+            <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Track history, notes, preferences. Send targeted messages. Build lasting client loyalty.</p>
+          </div>
+          <div class="p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 reveal-on-scroll" style="transition-delay: 0.15s;">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/send.svg" alt="" class="icon-feature no-shadow"/>
+            <h3 class="text-xl font-semibold mb-3">Automated Marketing</h3>
+            <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Run promotions, collect reviews, send automated reminders & thank-yous. Keep clients engaged.</p>
+          </div>
+          <div class="p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 reveal-on-scroll" style="transition-delay: 0.25s;">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/bar-chart-3.svg" alt="" class="icon-feature no-shadow"/>
+            <h3 class="text-xl font-semibold mb-3">Insightful Analytics</h3>
+            <p class="text-[var(--text-secondary)] text-sm leading-relaxed">Understand your business better. Track bookings, revenue, client retention, and make data-driven decisions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="feature-booking-detail" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="reveal-on-scroll">
+          <span class="inline-block bg-[var(--bx-secondary-hover)] text-[var(--gradient-start)] text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">Booking Bliss</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-5">Your Calendar Fills Itself, Magically</h2>
+          <p class="text-lg text-[var(--text-secondary)] mb-6">
+            Imagine waking up to a fully booked day without endless back-and-forth. Crow's smart booking system works 24/7, letting clients choose times that work for them (and you!), reducing admin time dramatically.
+          </p>
+          <ul class="space-y-4 text-[var(--text-secondary)] mb-8">
+            <li class="flex items-start"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle-2.svg" alt="Check" class="w-5 h-5 mr-3 text-[var(--gradient-start)] flex-shrink-0 mt-1"/><span>Personalized booking page that looks great on any device.</span></li>
+            <li class="flex items-start"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle-2.svg" alt="Check" class="w-5 h-5 mr-3 text-[var(--gradient-start)] flex-shrink-0 mt-1"/><span>Automatic confirmations, reminders, and follow-ups reduce no-shows.</span></li>
+            <li class="flex items-start"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle-2.svg" alt="Check" class="w-5 h-5 mr-3 text-[var(--gradient-start)] flex-shrink-0 mt-1"/><span>Manage multiple staff & locations with ease (Business Plan).</span></li>
+          </ul>
+          <a href="#pricing" class="pro-button pro-button-secondary">See Plans & Pricing</a>
+        </div>
+        <img
+          src="https://i.ibb.co/vxXF5HZs/Chat-GPT-Image-Apr-13-2025-at-10-54-52-AM.png"
+          alt="Crow app interactive calendar view showing appointments"
+          class="mx-auto transform perspective-1000 rotate-y-[-3deg] hover:rotate-y-0 transition-transform duration-500 reveal-on-scroll no-shadow object-cover w-full h-auto max-h-[480px]" style="transition-delay: 0.15s;"
+          onerror="this.onerror=null; this.src='https://placehold.co/600x450/e2e8f0/94a3b8?text=Booking+Calendar';"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <section id="feature-payment-detail" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-[var(--bg-white)]">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div class="order-2 md:order-1 reveal-on-scroll" style="transition-delay: 0.15s;">
+          <img
+            src="https://i.ibb.co/5gx0PmX8/Chat-GPT-Image-Apr-13-2025-at-10-59-15-AM.png"
+            alt="Crow app secure payment flow visual representation"
+            class="mx-auto transform perspective-1000 rotate-y-[3deg] hover:rotate-y-0 transition-transform duration-500 no-shadow object-cover w-full h-auto max-h-[480px]" onerror="this.onerror=null; this.src='https://placehold.co/600x450/e2e8f0/94a3b8?text=Payment+Flow';"
+            loading="lazy"
+          >
+        </div>
+        <div class="order-1 md:order-2 reveal-on-scroll">
+          <span class="inline-block bg-[var(--bx-secondary)] text-[var(--gradient-start)] text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wide">Cashflow Confidence</span>
+          <h2 class="text-3xl md:text-4xl font-bold mb-5">Get Paid Promptly, Protect Your Time</h2>
+          <p class="text-lg text-[var(--text-secondary)] mb-6">
+            No more awkward payment chases or lost revenue from no-shows. Crow integrates secure payments and customizable cancellation policies, ensuring you get paid for your valuable time.
+          </p>
+          <ul class="space-y-4 text-[var(--text-secondary)] mb-8">
+            <li class="flex items-start"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle-2.svg" alt="Check" class="w-5 h-5 mr-3 text-[var(--gradient-start)] flex-shrink-0 mt-1"/><span>Take deposits or full payment upfront securely via Stripe.</span></li>
+            <li class="flex items-start"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle-2.svg" alt="Check" class="w-5 h-5 mr-3 text-[var(--gradient-start)] flex-shrink-0 mt-1"/><span>Automate cancellation fees based on your custom policy rules.</span></li>
+            <li class="flex items-start"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-circle-2.svg" alt="Check" class="w-5 h-5 mr-3 text-[var(--gradient-start)] flex-shrink-0 mt-1"/><span>Easy tracking of income and quick, reliable bank payouts.</span></li>
+          </ul>
+          <a href="#download-app" class="pro-button pro-button-primary">Secure Your Income Today</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-[var(--bg-light)]">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-5">How Crow Works <span class="text-gradient">For You</span></h2>
+          <p class="text-lg text-[var(--text-secondary)]">
+            Choose your path and see how Crow adapts to your specific business needs.
+          </p>
+        </div>
+
+        <div class="flex justify-center items-center mb-16 reveal-on-scroll">
+          <div id="how-it-works-toggle" class="bg-white p-1.5 rounded-full shadow-md border border-[var(--border-color)] inline-flex space-x-1">
+            <button id="freelancerToggle" class="relative px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 min-w-[140px] focus:outline-none">
+              <span class="relative z-10">For Freelancers</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] rounded-full opacity-100 transition-opacity duration-300"></span>
+            </button>
+            <button id="businessToggle" class="relative px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 min-w-[140px] focus:outline-none">
+              <span class="relative z-10">For Businesses</span>
+              <span class="absolute inset-0 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] rounded-full opacity-0 transition-opacity duration-300"></span>
+            </button>
+          </div>
+        </div>
+
+        <div id="freelancerContent" class="space-y-16">
+          <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal-on-scroll">
+            <div class="md:pr-8">
+              <span class="inline-block bg-white text-[var(--gradient-start)] text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Step 1</span>
+              <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Quick Personal Setup</h3>
+              <p class="text-[var(--text-secondary)] mb-4">Create your professional profile in minutes. Add your services, define your working hours, and get your unique booking link ready to share.</p>
+              <p class="text-gray-600 text-sm italic">"Seriously, I went from signup to taking my first booking in less than 10 minutes!" - Freelance User</p>
+            </div>
+            <div>
+              <img src="https://i.ibb.co/KxT2hT9j/quick-personal-setup.png" alt="Freelancer setting up profile on Crow" class="rounded-lg w-full h-auto no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/94a3b8?text=Freelancer+Setup';"> </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal-on-scroll">
+            <div class="md:order-2 md:pl-8">
+              <span class="inline-block bg-white text-[var(--gradient-start)] text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Step 2</span>
+              <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Share Your Link & Get Booked</h3>
+              <p class="text-[var(--text-secondary)] mb-4">Add your booking link to your social media bio, website, or email signature. Clients can easily view your availability and book appointments 24/7.</p>
+              <p class="text-gray-600 text-sm italic">"My clients love how simple it is. No more back-and-forth messages trying to find a time." - Freelance User</p>
+            </div>
+            <img src="https://i.ibb.co/svk8Z1j5/share-link-get-book.png" alt="Client booking appointment with freelancer via Crow link" class="rounded-lg w-full h-auto md:order-1 no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/94a3b8?text=Freelancer+Booking';"> </div>
+          <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal-on-scroll">
+            <div class="md:pr-8">
+              <span class="inline-block bg-white text-[var(--gradient-start)] text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Step 3</span>
+              <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Manage & Grow</h3>
+              <p class="text-[var(--text-secondary)] mb-4">Focus on your craft while Crow handles the admin. Manage appointments, track client history, process payments, and watch your independent business thrive.</p>
+              <p class="text-gray-600 text-sm italic">"Crow gives me back hours every week. It's like having a personal assistant for my business!" - Freelance User</p>
+            </div>
+            <img src="https://i.ibb.co/h1nS66n5/manage-and-grow.png" alt="Freelancer managing appointments and client notes in Crow app" class="rounded-lg w-full h-auto no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/94a3b8?text=Freelancer+Growth';"> </div>
+        </div>
+
+        <div id="businessContent" class="space-y-16 hidden">
+          <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal-on-scroll">
+            <div class="md:pr-8">
+              <span class="inline-block bg-white text-[var(--gradient-start)] text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Step 1</span>
+              <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Set Up Your Team & Services</h3>
+              <p class="text-[var(--text-secondary)] mb-4">Easily add multiple staff members, assign services, manage individual schedules, and configure different locations if needed.</p>
+              <p class="text-gray-600 text-sm italic">"Onboarding our whole team was surprisingly straightforward. Huge time saver!" - Business Owner</p>
+            </div>
+            <img src="https://i.ibb.co/xtJpgmSL/setup-your-team-and-services.png" alt="Business owner setting up team members and services in Crow" class="rounded-lg w-full h-auto no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/94a3b8?text=Business+Setup';"> </div>
+          <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal-on-scroll">
+            <div class="md:order-2 md:pl-8">
+              <span class="inline-block bg-white text-[var(--gradient-start)] text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Step 2</span>
+              <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Streamline Operations</h3>
+              <p class="text-[var(--text-secondary)] mb-4">Manage bookings across your entire team from a central dashboard. Assign roles, track performance, and ensure smooth day-to-day operations.</p>
+              <p class="text-gray-600 text-sm italic">"Having a unified view of all appointments and staff availability is invaluable." - Business Owner</p>
+            </div>
+            <img src="https://i.ibb.co/jvdjWfgL/streamline-operations.png" alt="Dashboard view showing multiple staff calendars and bookings" class="rounded-lg w-full h-auto md:order-1 no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/94a3b8?text=Business+Operations';"> </div>
+          <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center reveal-on-scroll">
+            <div class="md:pr-8">
+              <span class="inline-block bg-white text-[var(--gradient-start)] text-xs font-bold px-3 py-1 rounded-full mb-4 uppercase tracking-widest">Step 3</span>
+              <h3 class="text-2xl lg:text-3xl font-semibold mb-4">Scale Your Business</h3>
+              <p class="text-[var(--text-secondary)] mb-4">Leverage advanced analytics to understand booking trends, revenue streams, and client behavior. Make informed decisions to grow efficiently.</p>
+              <p class="text-gray-600 text-sm italic">"The insights from Crow's analytics have directly impacted our growth strategy." - Business Owner</p>
+            </div>
+            <div>
+              <img src="https://i.ibb.co/C59V9Gwv/scale-your-business.png" alt="Analytics dashboard showing business growth charts and metrics" class="rounded-lg w-full h-auto no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/600x400/e2e8f0/94a3b8?text=Business+Scaling';"> </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-white">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-5">What Our Users <span class="text-gradient">Are Saying</span></h2>
+          <p class="text-lg text-[var(--text-secondary)]">
+            Real stories from real professionals who transformed their business with Crow.
+          </p>
+        </div>
+
+        <div class="testimonial-carousel relative reveal-on-scroll">
+          <div class="overflow-hidden">
+            <div id="testimonial-slider" class="flex transition-transform duration-500 ease-in-out">
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=32" alt="Sarah Wilson" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Sarah Wilson</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Freelance Designer</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"Crow has completely transformed how I manage my design business. The automated booking system alone has saved me countless hours of back-and-forth emails."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=11" alt="Michael Chen" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Michael Chen</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Personal Trainer</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"The payment protection feature is a game-changer. No more chasing invoices, and my income is much more stable. Clients love the professional experience."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=26" alt="Emma Rodriguez" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Emma Rodriguez</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Hair Stylist</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"Running my salon is so much easier. Automated reminders cut down no-shows, and the analytics help me make smarter business decisions. Highly recommend!"</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=45" alt="David Lee" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">David Lee</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Marketing Consultant</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"Crow's analytics dashboard gives me the insights I need to grow my consultancy. Seeing booking trends and client retention data is invaluable."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=47" alt="Jessica Miller" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Jessica Miller</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Massage Therapist</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"Switching to Crow was the best decision for my practice. The no-show protection has saved me so much lost income, and clients find it super easy to book."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=51" alt="Brian Clark" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Brian Clark</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Cleaner Services Owner</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"Managing multiple cleaners and schedules used to be chaotic. Crow Business Plan simplified everything. Highly recommended for teams."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=65" alt="Olivia Green" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Olivia Green</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Yoga Instructor</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"I love having a professional booking page! It makes my small studio look much more established. Plus, automated reminders are a lifesaver."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=68" alt="Kevin Harris" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Kevin Harris</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Photographer</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"Taking payments upfront or deposits through Crow has streamlined my workflow significantly. Less admin, more time behind the camera."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=31" alt="Chloe Adams" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Chloe Adams</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Nutritionist</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"The client hub is fantastic for keeping track of notes and progress. It helps me provide a much more personalized service."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+               <div class="w-full lg:w-1/3 flex-shrink-0 px-4 testimonial-slide">
+                 <div class="bg-[var(--bg-light)] p-8 rounded-2xl h-full flex flex-col border border-gray-200">
+                   <div class="flex items-center mb-5">
+                     <img src="https://i.pravatar.cc/150?img=14" alt="Ryan Scott" class="w-12 h-12 rounded-full mr-4 object-cover no-shadow" onerror="this.onerror=null; this.style.display='none';">
+                     <div>
+                       <h4 class="font-semibold text-lg text-[var(--text-primary)]">Ryan Scott</h4>
+                       <p class="text-sm text-[var(--text-secondary)]">Tutor</p>
+                     </div>
+                   </div>
+                   <blockquote class="text-[var(--text-secondary)] mb-5 italic flex-grow">"Simple to set up, easy for parents to book sessions for their kids, and reliable. Crow takes the hassle out of scheduling."</blockquote>
+                   <div class="flex text-yellow-400 mt-auto"> ★★★★★ </div>
+                 </div>
+               </div>
+
+            </div>
+          </div>
+
+          <button aria-label="Previous Testimonial" class="absolute top-1/2 -left-3 sm:-left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[var(--gradient-start)] ring-offset-1 z-10" onclick="moveTestimonials('prev')">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/chevron-left.svg" alt="Previous" class="w-5 h-5 text-[var(--gradient-start)]">
+          </button>
+          <button aria-label="Next Testimonial" class="absolute top-1/2 -right-3 sm:-right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md hover:shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-[var(--gradient-start)] ring-offset-1 z-10" onclick="moveTestimonials('next')">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/chevron-right.svg" alt="Next" class="w-5 h-5 text-[var(--gradient-start)]">
+          </button>
+
+          <div id="testimonial-dots" class="flex justify-center mt-10 space-x-2">
+            {/* Dots generated by JS */}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="py-16 md:py-20 px-6 lg:px-8 bg-[var(--bx-primary)] text-white">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 text-center">
+          <div class="reveal-on-scroll">
+            <p class="text-4xl lg:text-5xl font-bold mb-2">10,000+</p>
+            <p class="text-sm opacity-80 uppercase tracking-wider">Service Pros Joined</p>
+          </div>
+          <div class="reveal-on-scroll" style="transition-delay: 0.1s;">
+            <p class="text-4xl lg:text-5xl font-bold mb-2">1M+</p>
+            <p class="text-sm opacity-80 uppercase tracking-wider">Appointments Booked</p>
+          </div>
+          <div class="reveal-on-scroll" style="transition-delay: 0.2s;">
+            <p class="text-4xl lg:text-5xl font-bold mb-2">4.8/5</p>
+            <p class="text-sm opacity-80 uppercase tracking-wider">Average User Rating</p>
+          </div>
+          <div class="reveal-on-scroll" style="transition-delay: 0.3s;">
+            <p class="text-4xl lg:text-5xl font-bold mb-2">25%</p>
+            <p class="text-sm opacity-80 uppercase tracking-wider">Avg. No-Show Reduction*</p>
+          </div>
+        </div>
+        <p class="text-xs opacity-60 text-center mt-10">*Based on users enabling no-show protection features compared to manual booking.</p>
+      </div>
+    </section>
+
+    <section id="pricing" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-[var(--bg-light)]">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-20 reveal-on-scroll">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-5">Transparent Pricing. <br/> <span class="text-gradient">Unbeatable Value.</span></h2>
+          <p class="text-lg text-[var(--text-secondary)]">
+            Find the perfect plan to fuel your growth. Simple, affordable, and no hidden fees. Cancel anytime.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 items-stretch">
+          <div class="flex flex-col p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-md reveal-on-scroll h-full">
+            <h3 class="text-2xl font-semibold mb-2">Starter</h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-6 min-h-[40px]">Perfect for solo professionals just getting started.</p>
+            <p class="text-5xl font-extrabold mb-1">Free</p>
+            <p class="text-sm text-gray-500 mb-8">Basic booking essentials</p>
+            <a href="#download-app" class="pro-button pro-button-secondary w-full mb-8 mt-auto">Get Started Free</a>
+            <ul class="space-y-3 text-sm text-[var(--text-secondary)]">
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Online Booking Page</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Calendar Management</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Basic Client Records (up to 50)</li>
+              <li class="flex items-center text-gray-400"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/x.svg" alt="" class="w-4 h-4 mr-2 text-gray-400 flex-shrink-0"/>Payment Processing</li>
+              <li class="flex items-center text-gray-400"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/x.svg" alt="" class="w-4 h-4 mr-2 text-gray-400 flex-shrink-0"/>Automated Reminders</li>
+            </ul>
+          </div>
+          <div class="flex flex-col p-8 bg-white rounded-xl border-2 border-[var(--gradient-start)] shadow-2xl relative transform lg:scale-105 reveal-on-scroll h-full" style="transition-delay: 0.1s;">
+            <span class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[var(--gradient-start)] to-[var(--gradient-end)] text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+            <h3 class="text-2xl font-semibold mb-2 mt-3">Pro</h3> <p class="text-[var(--text-secondary)] text-sm mb-6 min-h-[40px]">For established pros looking to streamline & grow.</p>
+            <div class="mb-8">
+              <span class="text-5xl font-extrabold">$29</span>
+              <span class="text-sm text-gray-500">/ month</span>
+            </div>
+            <p class="text-xs text-gray-500 mb-8 -mt-6">(Billed annually, or $35 month-to-month)</p>
+            <a href="#download-app" class="pro-button pro-button-primary w-full mb-8 mt-auto">Choose Pro Plan</a>
+            <ul class="space-y-3 text-sm text-[var(--text-secondary)]">
+              <li class="flex items-center font-medium text-[var(--text-primary)]"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Everything in Starter, plus:</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Unlimited Clients & Bookings</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Secure Payment Processing</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>No-Show Protection Tools</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Automated Reminders & Follow-ups</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Basic Marketing Tools</li>
+            </ul>
+          </div>
+          <div class="flex flex-col p-8 bg-white rounded-xl border border-[var(--border-color)] shadow-md reveal-on-scroll h-full" style="transition-delay: 0.2s;">
+            <h3 class="text-2xl font-semibold mb-2">Business</h3>
+            <p class="text-[var(--text-secondary)] text-sm mb-6 min-h-[40px]">For teams and businesses ready to scale operations.</p>
+            <div class="mb-8">
+              <span class="text-5xl font-extrabold">$59+</span>
+              <span class="text-sm text-gray-500">/ month</span>
+            </div>
+            <p class="text-xs text-gray-500 mb-8 -mt-6">(Based on team size)</p>
+            <a href="#contact-sales" class="pro-button pro-button-secondary w-full mb-8 mt-auto">Contact Sales</a>
+            <ul class="space-y-3 text-sm text-[var(--text-secondary)]">
+              <li class="flex items-center font-medium text-[var(--text-primary)]"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check-check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Everything in Pro, plus:</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Multi-Staff Management</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Multiple Location Support</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Advanced Analytics & Reporting</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Staff Roles & Permissions</li>
+              <li class="flex items-center"><img src="https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/check.svg" alt="" class="w-4 h-4 mr-2 text-[var(--gradient-start)] flex-shrink-0"/>Priority Support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 bg-white">
+      <div class="max-w-3xl mx-auto reveal-on-scroll">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-extrabold mb-5">Got Questions? <br/> <span class="text-gradient">We Have Answers.</span></h2>
+          <p class="text-lg text-[var(--text-secondary)]">
+            Find answers to common questions about Crow.
+          </p>
+        </div>
+        <div class="faq-list space-y-1">
+          <div class="faq-item">
+            <details>
+              <summary>How easy is it to get started with Crow? <span class="faq-icon">+</span></summary>
+              <div>Getting started is simple! Sign up for a free account or paid plan, follow the quick setup guide (add services, availability), and share your unique booking link. Most users are ready to accept bookings within 10-15 minutes. We also have helpful guides and support if you need assistance.</div>
+            </details>
+          </div>
+          <div class="faq-item">
+            <details>
+              <summary>Can I use Crow on my phone and computer? <span class="faq-icon">+</span></summary>
+              <div>Absolutely! Crow is designed as a web application that works seamlessly across desktops, tablets, and mobile browsers. We also offer dedicated mobile apps for iOS and Android (included with Pro and Business plans) for the best on-the-go experience.</div>
+            </details>
+          </div>
+          <div class="faq-item">
+            <details>
+              <summary>How does Crow help reduce no-shows? <span class="faq-icon">+</span></summary>
+              <div>Crow's Pro and Business plans include several features to combat no-shows: automated email/SMS reminders, the ability to require deposits or save client card details, and customizable cancellation policies with automatic fee enforcement. Users typically see a significant reduction in missed appointments.</div>
+            </details>
+          </div>
+          <div class="faq-item">
+            <details>
+              <summary>What if I already use Google Calendar or Outlook? <span class="faq-icon">+</span></summary>
+              <div>No problem! Crow offers two-way calendar sync (available on paid plans) with Google Calendar and Outlook Calendar. This prevents double bookings by blocking off time in Crow when you have external events, and vice-versa.</div>
+            </details>
+          </div>
+          <div class="faq-item">
+            <details>
+              <summary>What kind of support do you offer? <span class="faq-icon">+</span></summary>
+              <div>We offer comprehensive support! All users have access to our extensive online Help Center 24/7. Email support is available for all plans, while Pro and Business plan users benefit from priority email and chat support channels during business hours.</div>
+            </details>
+          </div>
+        </div>
+        <p class="text-center mt-12 text-[var(--text-secondary)]">
+          Still have questions? <a href="#support" class="font-medium text-[var(--gradient-start)] hover:text-[var(--gradient-hover-start)] hover:underline">Contact our friendly support team</a>.
+        </p>
+      </div>
+    </section>
+
+    <section id="download-app" class="py-20 md:py-28 lg:py-32 px-6 lg:px-8 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-[var(--gradient-start)] to-[var(--gradient-end)]"></div>
+      <div class="absolute inset-0 opacity-5 mix-blend-overlay" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+      <div class="max-w-6xl mx-auto relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div class="text-center lg:text-left reveal-on-scroll order-2 lg:order-1">
+            <span class="inline-block text-white/80 text-sm font-semibold px-4 py-1 rounded-full border border-white/30 mb-6 uppercase tracking-wider">
+              Mobile App Available
+            </span>
+            <h2 class="text-4xl md:text-5xl xl:text-6xl font-extrabold mb-6 text-white leading-tight">
+              Your Business,<br/>
+              <span class="opacity-90">Always in Your Pocket.</span>
+            </h2>
+            <p class="text-lg md:text-xl text-white/80 mb-10 max-w-xl mx-auto lg:mx-0">
+              Manage your schedule, connect with clients, process payments, and track performance on the go with the Crow mobile app. Available on iOS and Android.
+            </p>
+
+            <div class="space-y-8 flex flex-col items-center lg:items-start">
+              <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                <a href="#" class="transform hover:scale-105 transition duration-300 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg">
+                  <img src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us?size=250x83&amp;releaseDate=1600473600"
+                    alt="Download on the App Store"
+                    class="h-12 md:h-14 no-shadow"
+                    onerror="this.onerror=null; this.src='https://placehold.co/180x50/000000/ffffff?text=App+Store';">
+                </a>
+                <a href="#" class="transform hover:scale-105 transition duration-300 hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-white/50 rounded-lg">
+                  <img alt='Get it on Google Play'
+                    src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'
+                    class="h-12 md:h-14 no-shadow"
+                    onerror="this.onerror=null; this.src='https://placehold.co/180x50/000000/ffffff?text=Google+Play';">
+                </a>
+              </div>
+
+              <div class="inline-flex items-center gap-4 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20 max-w-xs w-full">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/crow-app-download" /* Replace with actual QR code URL */
+                  alt="QR Code to download Crow app"
+                  class="w-20 h-20 rounded-md border border-white/20 no-shadow"
+                  onerror="this.onerror=null; this.src='https://placehold.co/80x80/ffffff/333333?text=QR';">
+                <div class="text-white text-left">
+                  <p class="font-semibold text-sm mb-1">Scan to Download</p>
+                  <p class="text-xs opacity-80 leading-snug">Point your camera at the code to get the app instantly.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="order-1 lg:order-2 reveal-on-scroll" style="transition-delay: 0.15s;">
+              <div class="relative mx-auto max-w-xs lg:max-w-sm">
+                <img
+                    src="https://i.ibb.co/HLv1BFDW/Plum-i-OS-30-left.png"
+                    alt="Crow App Interface on a smartphone"
+                    class="w-full h-auto rounded-3xl transform perspective-1000 hover:scale-105 transition-transform duration-500 relative z-10 no-shadow" onerror="this.onerror=null; this.src='https://placehold.co/320x600/e2e8f0/94a3b8?text=App+Screenshot';"
+                  >
+                <div class="absolute -top-8 -right-8 w-24 h-24 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="support" class="py-16 md:py-20 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-10 lg:gap-12 text-sm">
+      <div class="col-span-2 md:col-span-4 lg:col-span-2 mb-6 lg:mb-0 pr-8">
+        <a href="#hero" class="text-3xl font-extrabold text-gradient">Crow</a>
+        <p class="text-xs leading-relaxed mb-6">Empowering service professionals worldwide to build thriving businesses with less stress and more success.</p>
+        <div class="flex space-x-5 social-links"> <a href="#" aria-label="Facebook" class="transition duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg></a>
+          <a href="#" aria-label="Instagram" class="transition duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372.527-.205.973-.478 1.417-.923.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.231s.008-2.389.046-3.232c.035-.78.166-1.204.275-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></a>
+          <a href="#" aria-label="Twitter" class="transition duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .79 13.58a6.32 6.32 0 0 1-.79-.045A9.344 9.344 0 0 0 5.026 15z"/></svg></a>
+          <a href="#" aria-label="LinkedIn" class="transition duration-200"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-4 text-gray-800 uppercase tracking-wider text-xs">Product</h5>
+        <ul class="space-y-3">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#download-app">Mobile App</a></li>
+          <li><a href="#security">Security</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-4 text-gray-800 uppercase tracking-wider text-xs">Company</h5>
+        <ul class="space-y-3">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#blog">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-4 text-gray-800 uppercase tracking-wider text-xs">Resources</h5>
+        <ul class="space-y-3">
+          <li><a href="#support">Help Center</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#guides">Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-semibold mb-4 text-gray-800 uppercase tracking-wider text-xs">Legal</h5>
+        <ul class="space-y-3">
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#cookies">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div>
+      </div>
+    </div>
+    <div class="copyright mt-16 pt-8 border-t text-center text-xs">
+      <p>&copy; <span id="current-year"></span> Crow Technologies Inc. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    // --- Global Variables ---
+    const header = document.getElementById('main-header');
+    const headerOffset = header?.offsetHeight || 70; // Dynamic header height or fallback
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    const detailsElements = document.querySelectorAll('.faq-item details');
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    const freelancerToggle = document.getElementById('freelancerToggle');
+    const businessToggle = document.getElementById('businessToggle');
+    const freelancerContent = document.getElementById('freelancerContent');
+    const businessContent = document.getElementById('businessContent');
+    const testimonialSlider = document.getElementById('testimonial-slider');
+    let testimonialSlides = []; // Will be populated after DOM load
+    const testimonialDotsContainer = document.getElementById('testimonial-dots');
+    let currentTestimonial = 0;
+    let testimonialCount = 0; // Will be calculated after DOM load
+    let testimonialInterval;
+
+    // --- Initial Setup ---
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set current year in footer
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Update testimonialSlides Nodelist
+      testimonialSlides = document.querySelectorAll('.testimonial-slide');
+
+      // Initialize FAQ accordion behavior
+      initializeFAQAccordion();
+
+      // Initialize scroll reveal observer
+      initializeScrollReveal();
+
+      // Initialize How It Works toggle
+      initializeHowItWorksToggle();
+
+      // Initialize Testimonial Carousel (now with correct slide count)
+      initializeTestimonials();
+
+      // Initialize smooth scroll for anchor links
+      initializeSmoothScroll();
+
+      // Initialize mobile menu toggle
+      initializeMobileMenu();
+
+      // Add scroll listener for sticky header shadow
+      window.addEventListener('scroll', handleScroll);
+      handleScroll(); // Initial check in case page loads scrolled
+    });
+
+
+    // --- Function Definitions ---
+
+    // Handle page scroll events (e.g., sticky header shadow)
+    function handleScroll() {
+      if (window.scrollY > 50) {
+        document.body.classList.add('scrolled');
+      } else {
+        document.body.classList.remove('scrolled');
+      }
+    }
+
+    // Smooth scroll for internal anchor links
+    function initializeSmoothScroll() {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const hrefAttribute = anchor.getAttribute('href');
+
+        // Exclude links that just have # or are for non-scrollable sections/external links
+        const nonScrollTargets = ['#', '#contact-sales', '#security', '#careers', '#contact', '#blog', '#privacy', '#terms', '#cookies', '#guides']; // Add any other non-scroll IDs
+        if (!hrefAttribute || nonScrollTargets.includes(hrefAttribute) || hrefAttribute.startsWith('#') && !document.getElementById(hrefAttribute.substring(1))) {
+          return; // Ignore if it's just "#", a non-scroll link, or the target doesn't exist
+        }
+
+        anchor.addEventListener('click', function (e) {
+          const targetId = this.getAttribute('href').substring(1);
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            e.preventDefault();
+            // Recalculate header offset dynamically in case it changes (e.g., on resize)
+            const currentHeaderOffset = document.getElementById('main-header')?.offsetHeight || 70;
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - currentHeaderOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+
+            // Close mobile menu if open after clicking a link
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+              mobileMenu.classList.add('hidden');
+              mobileMenuButton.setAttribute('aria-expanded', 'false'); // Update ARIA state
+            }
+          }
+        });
+      });
+    }
+
+    // Mobile Menu Toggle Logic
+    function initializeMobileMenu() {
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', isHidden ? 'false' : 'true');
+        });
+      }
+    }
+
+    // FAQ Accordion - Ensure only one is open at a time
+    function initializeFAQAccordion() {
+      detailsElements.forEach(details => {
+        details.addEventListener('toggle', () => {
+          if (details.open) {
+            // Close other open details elements
+            detailsElements.forEach(otherDetails => {
+              if (otherDetails !== details && otherDetails.open) {
+                otherDetails.removeAttribute('open');
+              }
+            });
+          }
+        });
+      });
+    }
+
+    // Simple Scroll Reveal Animation using Intersection Observer
+    function initializeScrollReveal() {
+      if (!('IntersectionObserver' in window)) {
+        console.warn("Intersection Observer not supported, reveal animations disabled.");
+        // Fallback: reveal all elements immediately if observer not supported
+        revealElements.forEach(el => el.classList.add('is-visible'));
+        return;
+      }
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // Optional: Stop observing once revealed to save resources
+            // observer.unobserve(entry.target);
+          } else {
+            // Optional: Remove class if you want animation to repeat on scroll up
+            // entry.target.classList.remove('is-visible');
+          }
+        });
+      }, {
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger animation slightly earlier
+      });
+
+      revealElements.forEach(el => {
+        revealObserver.observe(el);
+      });
+    }
+
+    // How It Works Toggle Logic
+    function initializeHowItWorksToggle() {
+      if (!freelancerToggle || !businessToggle || !freelancerContent || !businessContent) return;
+
+      function updateToggleState(showFreelancer) {
+        // Update content visibility
+        freelancerContent.classList.toggle('hidden', !showFreelancer);
+        businessContent.classList.toggle('hidden', showFreelancer);
+
+        // Update toggle button styles (background opacity and text color)
+        freelancerToggle.querySelector('span:last-child').style.opacity = showFreelancer ? '1' : '0';
+        businessToggle.querySelector('span:last-child').style.opacity = showFreelancer ? '0' : '1';
+
+        freelancerToggle.querySelector('span:first-child').className =
+          showFreelancer ? 'relative z-10 text-white transition-colors duration-300' : 'relative z-10 text-[var(--text-primary)] transition-colors duration-300';
+        businessToggle.querySelector('span:first-child').className =
+          showFreelancer ? 'relative z-10 text-[var(--text-primary)] transition-colors duration-300' : 'relative z-10 text-white transition-colors duration-300';
+      }
+
+      freelancerToggle.addEventListener('click', () => updateToggleState(true));
+      businessToggle.addEventListener('click', () => updateToggleState(false));
+
+      // Initialize toggle state (show Freelancer by default)
+      updateToggleState(true);
+    }
+
+    // --- Testimonial Carousel Logic ---
+
+    // Calculate items per view dynamically (for transformations and dot generation)
+    function calculateItemsPerView() {
+      // Ensure slides are available before calculating
+      if (!testimonialSlider || !testimonialSlides || testimonialSlides.length === 0) return 1;
+
+      // Consider window width for breakpoints
+      const windowWidth = window.innerWidth;
+      let items = 1; // Default mobile
+      if (windowWidth >= 1024) { // Tailwind 'lg' breakpoint
+        items = 3;
+      } else if (windowWidth >= 640) { // Tailwind 'sm' breakpoint (adjust if you want 2 per view on tablet)
+        items = 1; // Example: keeping 1 per view on tablets too
+      }
+
+      // Get actual container width and first slide width for potential overrides
+      const sliderWidth = testimonialSlider.clientWidth;
+      let slideWidth = 0;
+      for (let slide of testimonialSlides) {
+        if (slide.offsetWidth > 0) {
+            slideWidth = slide.offsetWidth;
+            break;
+        }
+      }
+       // Fallback if no slide has width yet
+      if (slideWidth === 0 && sliderWidth > 0) slideWidth = sliderWidth / items;
+
+      // Use the most precise calculation if possible
+      if (sliderWidth > 0 && slideWidth > 0) {
+         // Check for very small slideWidth which might happen during load/resize
+         if (slideWidth < 10) { // Arbitrary small value check
+          items = Math.max(1, Math.floor(sliderWidth / 100)); // Fallback based on typical slide size guess
+         } else {
+          items = Math.max(1, Math.round(sliderWidth / slideWidth));
+         }
+      }
+
+      return Math.min(items, testimonialSlides.length); // Cannot show more items than available
+    }
+
+
+    function initializeTestimonials() {
+        // Ensure elements exist
+        if (!testimonialSlider || !testimonialDotsContainer || !testimonialSlides || testimonialSlides.length === 0) {
+          console.error("Testimonial slider, dots container, or slides not found.");
+          return;
+        }
+
+        const itemsPerView = calculateItemsPerView();
+        testimonialCount = testimonialSlides.length; // Set the global count
+        const numDots = Math.ceil(testimonialCount / itemsPerView);
+
+        // --- Create Dots ---
+        testimonialDotsContainer.innerHTML = ''; // Clear existing dots
+        if (numDots > 1) { // Only show dots if there's more than one page
+          for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement('button');
+            dot.classList.add('w-2.5', 'h-2.5', 'rounded-full', 'bg-[var(--gradient-start)]', 'transition-opacity', 'duration-300');
+            dot.setAttribute('aria-label', `Go to testimonial page ${i + 1}`);
+            dot.style.opacity = i === 0 ? '1' : '0.4'; // Active dot fully opaque
+            const targetSlideIndex = i * itemsPerView;
+            // Use event listener instead of onclick for better practice
+            dot.addEventListener('click', () => goToTestimonial(targetSlideIndex));
+            testimonialDotsContainer.appendChild(dot);
+          }
+        }
+
+        currentTestimonial = 0; // Reset to first slide on init/resize
+        updateTestimonialPosition(); // Set initial position
+        startTestimonialAutoPlay(); // Start auto-play
+      }
+
+    function updateTestimonialPosition() {
+      if (!testimonialSlider || testimonialCount === 0) return;
+
+      const itemsPerView = calculateItemsPerView();
+      const slidePercentage = 100 / itemsPerView;
+      const numDots = Math.ceil(testimonialCount / itemsPerView);
+
+      // Ensure currentTestimonial is valid (first slide of a page)
+      currentTestimonial = Math.max(0, Math.min(currentTestimonial, testimonialCount - 1));
+      // Snap to the start of the current page
+      currentTestimonial = Math.floor(currentTestimonial / itemsPerView) * itemsPerView;
+
+
+      // Calculate the effective index for transformation, preventing scrolling beyond the last item group
+      let effectiveIndex = Math.min(currentTestimonial, Math.max(0, testimonialCount - itemsPerView));
+      // Ensure effectiveIndex doesn't go negative if itemsPerView > testimonialCount
+      effectiveIndex = Math.max(0, effectiveIndex);
+
+      testimonialSlider.style.transform = `translateX(-${effectiveIndex * slidePercentage}%)`;
+
+      // Update dots
+      const currentDotIndex = Math.floor(currentTestimonial / itemsPerView);
+      const dots = testimonialDotsContainer.querySelectorAll('button');
+      if (dots.length === numDots) { // Only update if dots exist and match count
+        dots.forEach((dot, index) => {
+          dot.style.opacity = index === currentDotIndex ? '1' : '0.4';
+        });
+      } else if (dots.length === 0 && numDots > 1) {
+        // Dots might not have been created if numDots was initially 1 and changed on resize
+        // Re-run init to create dots (might cause flicker, better handled in resize)
+        console.warn("Re-initializing testimonials due to dot mismatch.");
+        initializeTestimonials();
+      } else if (dots.length > 0 && numDots <= 1) {
+        testimonialDotsContainer.innerHTML = ''; // Remove dots if no longer needed
+      }
+    }
+
+
+    function moveTestimonials(direction) {
+      stopTestimonialAutoPlay();
+      if (testimonialCount === 0) return;
+
+      const itemsPerView = calculateItemsPerView();
+      const currentPageIndex = Math.floor(currentTestimonial / itemsPerView);
+      const totalPages = Math.ceil(testimonialCount / itemsPerView);
+      if (totalPages <= 1) return; // No need to move if only one page
+
+      let nextPageIndex;
+      if (direction === 'next') {
+        nextPageIndex = (currentPageIndex + 1) % totalPages;
+      } else { // 'prev'
+        nextPageIndex = (currentPageIndex - 1 + totalPages) % totalPages;
+      }
+
+      currentTestimonial = nextPageIndex * itemsPerView;
+      // Ensure index stays within valid slide range
+      currentTestimonial = Math.max(0, Math.min(currentTestimonial, testimonialCount - 1));
+
+      updateTestimonialPosition();
+      startTestimonialAutoPlay();
+    }
+
+    function goToTestimonial(slideIndex) {
+      stopTestimonialAutoPlay();
+      if (testimonialCount === 0) return;
+      const itemsPerView = calculateItemsPerView();
+      // Snap to the beginning of the page containing the target slide index
+      currentTestimonial = Math.floor(slideIndex / itemsPerView) * itemsPerView;
+      currentTestimonial = Math.max(0, Math.min(currentTestimonial, testimonialCount - 1)); // Ensure valid range
+      updateTestimonialPosition();
+      startTestimonialAutoPlay();
+    }
+
+    function startTestimonialAutoPlay() {
+      stopTestimonialAutoPlay(); // Clear existing interval first
+      if (testimonialCount > calculateItemsPerView()) { // Only autoplay if there's more than one page
+        testimonialInterval = setInterval(() => moveTestimonials('next'), 5000); // Auto-advance every 5 seconds
+      }
+    }
+
+    function stopTestimonialAutoPlay() {
+      clearInterval(testimonialInterval);
+    }
+
+    // Re-calculate testimonial layout on window resize (debounced)
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        // Re-initialize completely to handle changes in itemsPerView and dots
+        initializeTestimonials();
+      }, 250);
+    });
+
+
+    // --- Make functions globally accessible if called by inline onclick ---
+    window.moveTestimonials = moveTestimonials;
+    // goToTestimonial is attached via JS event listener, no longer needs to be global
+
+  </script>
+
+</body>
+</html>
